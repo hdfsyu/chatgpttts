@@ -10,7 +10,7 @@ You can't really compile since python is an interpreted language...
 
 ## Running
 
-type `pip install -r requirements.txt` and then type `python main.py` or `python3 main.py` something like that.
+type `python -m venv venv` then open the activate script in the venv folder which could be venv\Scripts\activate or venv\bin\activate, type `pip install -r requirements.txt` and then type `python main.py` or `python3 main.py` something like that.
 
 # Notes
 
