@@ -1,5 +1,7 @@
 import pyttsx3
 import openai
+import speech_recognition as sr
+r = sr.Recognizer()
 engine = pyttsx3.init()
 """ RATE"""
 rate = engine.getProperty('rate')   # getting details of current speaking rate
@@ -21,17 +23,20 @@ model="gpt-3.5-turbo"
 while True:
     engine.say("Hi! I am ChatGPT, model " + model + ", what do you want to ask me?")
     engine.runAndWait()
+    with sr.Microphone() as source:
+        audio = r.listen(source)
     message_input = input("Hi! I am ChatGPT, model " + model + ", what do you want to ask me? ")
     response = openai.ChatCompletion.create(
         model=model,
         messages=[
                 {"role": "system", "content": "You are a chatbot"},
-                {"role": "user", "content": message_input},
+                {"role": "user", "content": message_input},# change this to audio for microphone input
             ]
     )
     result = ''
     for choice in response.choices:
         result += choice.message.content
+    print(r.recognize(audio))
     engine.say(result)
     engine.runAndWait()
     print(result)
