@@ -3,12 +3,6 @@ import openai
 import speech_recognition as sr
 r = sr.Recognizer()
 engine = pyttsx3.init()
-""" RATE"""
-rate = engine.getProperty('rate')   # getting details of current speaking rate
-print (rate)                        #printing current voice rate
-engine.setProperty('rate', 100)     # setting up new voice rate
-
-
 """VOLUME"""
 volume = engine.getProperty('volume')   #getting to know current volume level (min=0 and max=1)
 print (volume)                          #printing current volume level
